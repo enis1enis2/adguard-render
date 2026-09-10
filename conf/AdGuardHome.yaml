@@ -1,0 +1,15 @@
+http:
+  address: 0.0.0.0:3000
+  session_ttl: 720h
+
+dns:
+  bind_hosts:
+    - 0.0.0.0
+  port: 5353
+  protection_enabled: true
+  filtering_enabled: true
+  upstream_dns:
+    - https://dns.cloudflare.com/dns-query
+    - https://dns.google/dns-query
+
+schema_version: 27
