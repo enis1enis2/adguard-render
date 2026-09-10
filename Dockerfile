@@ -1,3 +1,7 @@
 FROM adguard/adguardhome:latest
-EXPOSE 80 443 3000
-CMD ["/opt/adguardhome/AdGuardHome", "-c", "/opt/adguardhome/conf/AdGuardHome.yaml", "-w", "/opt/adguardhome/work"]
+
+# Ensure binary and directory permissions are executable by non-root users
+RUN chmod -R 777 /opt/adguardhome
+
+# Run AdGuardHome without elevated net-caps requirements
+CMD ["/opt/adguardhome/AdGuardHome", "--no-check-update", "-c", "/opt/adguardhome/conf/AdGuardHome.yaml", "-w", "/opt/adguardhome/work"]
